@@ -12,10 +12,12 @@ public class Lugar {
 
     public Lugar() {
         destinos=new HashSet<>();
+        conteudo=new HashSet<>();
     }
 
     public Lugar(String nome) {
         destinos=new HashSet<>();
+        conteudo=new HashSet<>();
         this.nome = nome;
     }
 

@@ -23,7 +23,11 @@ public class Heroi {
     }
 
     public void setPosicao(Lugar posicao) {
+        if (this.posicao!=null){
+            this.posicao.getConteudo().remove(this);
+        }
         this.posicao = posicao;
+        this.posicao.getConteudo().add(this);
     }
 
     public Integer getEnergia() {
@@ -55,7 +59,11 @@ public class Heroi {
     }
 
     public String observe() {
-        String resposta = "Você pode ir para ";
+        String resposta="Aqui tem";
+        for (Object coisa:posicao.getConteudo()){
+            resposta=resposta+" "+coisa;
+        }
+        resposta = resposta + "\nVocê pode ir para ";
         for (Lugar destino : posicao.getDestinos()) {
             resposta = resposta + destino.getNome() + " ";
         }
@@ -65,17 +73,24 @@ public class Heroi {
     public void vaPara(String ondeOCaraQuerIr) {
         Lugar novoLugar=null;
         for (Lugar destino : posicao.getDestinos()) {
-            if (destino.getNome().equals(ondeOCaraQuerIr)){
+            if (destino.getNome().equalsIgnoreCase(ondeOCaraQuerIr)){
                 novoLugar=destino;
                 break;
             }
         }
         if (novoLugar!=null){
-            posicao=novoLugar;
+            setPosicao(novoLugar);
         }
         else{
             throw new RuntimeException("Impossível ir para "+ondeOCaraQuerIr);
         }
     }
+
+    @Override
+    public String toString() {
+        return nome;
+    }
+    
+    
 
 }
