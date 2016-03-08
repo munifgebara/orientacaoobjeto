@@ -97,6 +97,11 @@ public class Heroi {
     }
 
     public String atiraEm(String outro) {
+        if(armaEmUso.getQuantidadeMunicao()<1){
+            return "Sem munição";
+        } else {
+            armaEmUso.diminuiMunicao();
+        }
         String resultado = "";
         for (Object obj : getPosicao().getConteudo()) {
             if (obj instanceof Heroi) {

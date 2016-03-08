@@ -25,4 +25,8 @@ public class Arma extends Coisa {
         this.dano = dano;
     }
 
+    public void diminuiMunicao() {
+        quantidadeMunicao--;
+    }
+
 }
