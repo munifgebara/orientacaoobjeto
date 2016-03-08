@@ -26,6 +26,9 @@
             else if (acao.startsWith("va para ")) {
                 heroi.vaPara(acao.replaceFirst("va para ", ""));
             }
+            else if (acao.startsWith("atire no ")) {
+                heroi.atiraEm(acao.replaceFirst("atire no ", ""));
+            }
             else {
                 observacao="Não entendo '"+acao+"'";
             }
@@ -42,9 +45,9 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Jogo</title>
     </head>
-    <body>
+    <body style="font-family: sans-serif">
         <h1>Jogo Orientado a Objetos</h1>
-        ${heroi.nome}, você está na(o) ${heroi.posicao}<br/>
+        ${heroi.nome}, você está na(o) ${heroi.posicao}, tem ${heroi.energia} de vida e ${heroi.armaEmUso.quantidadeMunicao}<br/>
         <%=observacao%><br/>
         O que você quer fazer?<br/>
         <form action="jogo.jsp">
